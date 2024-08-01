@@ -1,0 +1,22 @@
+.footer {
+    width: 100%;
+    font-size: .8em;
+    margin-top: 10px;
+}
+
+.footer-inner {
+    text-align: center;
+    vertical-align: top;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.footer-inner a {
+    text-decoration: none;
+    color: var(--text-color);
+    opacity: .5;
+}
+
+.footer hr {
+    display: none;
+}

@@ -1,0 +1,50 @@
+---
+layout: base
+---
+
+
+<link rel="stylesheet" href="/css/contact.css">
+
+<style>
+    .contact {
+        padding-inline-start: 40px;
+        list-style: none;
+    }
+
+    .contact-item {
+        line-height: 2em;
+        font-size: 1.4em;
+    }
+
+    .contact-icon {
+    }
+
+    .contact-icon svg {
+        font-size: 1.4em;
+        margin-right: 20px;
+        height: 1em;
+        width: 1em;
+        fill: var(--text-color);
+        vertical-align: -20%;
+    }
+
+    .contact-link {
+        color: var(--text-color);
+        text-decoration: none;
+        opacity: .5;
+    }
+</style>
+
+<h1 class="title">{{ content | safe }}</h1>
+
+<ul class="contact">
+    {% for name, item in social %}
+        <li class="contact-item">
+            <span class="contact-icon">
+                {% set include_link = ["logos/", item.icon, ".svg"] | join %}
+                {% include include_link %}
+            </span>
+            <a class="contact-link" href="{{item.url}}">{{item.text}}</a>
+        </li>
+    {% endfor %}
+</ul>

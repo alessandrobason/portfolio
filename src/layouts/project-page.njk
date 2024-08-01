@@ -1,0 +1,342 @@
+---
+layout: base
+---
+
+<style>
+
+.header, .footer {
+    z-index: 100;
+}
+
+.title {
+    line-height: 1.4em;
+}
+
+.content-outer {
+    background-color: rgba(0, 0, 0, 0.7);
+
+    -webkit-backdrop-filter: blur(100px);
+    backdrop-filter: blur(100px);
+    
+    border-left: solid 1px rgba(255, 255, 255, 0.2);
+    border-right: solid 1px rgba(255, 255, 255, 0.2);
+    
+    box-shadow: 0 0 40px rgba(0, 0, 0, 1.0);
+}
+
+.page-filter {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    width: 100%;
+    height: 100%;
+}
+
+.page-background {
+    display: block;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    height: 100vh;
+    width: 100vw;
+
+    background-size: cover;
+    background-position: center;
+}
+
+.footer hr {
+    display: block;
+}
+
+.youtube {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.game {
+    width: 100%;
+}
+
+.top-icon svg {
+    fill: var(--text-color);
+    height: 1.5em;
+    width: 1.5em;
+    margin-right: 5px;
+    vertical-align: -.3em;
+}
+
+.top-link {
+    font-size: 1em;
+    color: var(--text-color);
+    text-decoration: none;
+    opacity: .8;
+}
+
+.top-text {
+    margin-right: 5px;
+    text-decoration: underline;
+}
+
+.top-item {
+    display: inline-block;
+}
+
+.top-items {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.image-container {
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 1.0);
+    border: solid 1px rgba(255, 255, 255, 0.2);
+}
+
+.page-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: 50%;
+    transition: all .2s;
+    cursor: pointer;
+}
+
+.page-image:hover {
+    filter: blur(5px);
+    transform: scale(1.1);
+}
+
+
+@media screen and (max-width: 1964px) {
+    .page-images {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 40px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+}
+
+@media screen and (min-width: 1964px) {
+    .page-images {
+        position: absolute;
+        right: -25%;
+        top: 20px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+}
+
+.carousel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .3);
+    z-index: 1000;
+
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+}
+
+#carousel-container {
+    position: absolute;
+    margin: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    justify-content: center;
+
+    height: 80vh;
+    width: 100%;
+}
+
+#carousel-image {
+    border-radius: 10px;
+    background-size: cover;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 1.0);
+    border: solid 1px rgba(255, 255, 255, 0.2);
+}
+
+.arrow-left, .arrow-right {
+    width: 1em;
+    padding: 0 1em 0 1em;
+    cursor: pointer;
+    display: flex;
+}
+
+.arrow-left {
+    padding-left: 3em;
+}
+
+.arrow-right {
+    padding-right: 3em;
+}
+</style>
+
+{% if background %}
+    <style>
+    .page-background {
+        background-image: url("/assets/projects/{{dir}}/{{background}}");
+    }
+    </style>
+{% endif %}
+
+{% set proj = projects.getProject(title) %}
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<div class="page-content">
+    <h1 class="title">{{ title }}</h1>
+    <hr>
+    {% if download or source %}
+        <div class="top-items">
+            {% if download %}
+                <a target="_blank" href="{{download}}" class="top-link">
+                    <div class="download top-item">
+                        <span class="top-icon">
+                            {% include "logos/itchio.svg" %}
+                        </span>
+                        <span class="top-text">Download</span>
+                    </div>
+                </a>
+            {% endif %}
+
+            {% if source %}
+                <a target="_blank" href="{{source}}" class="top-link">
+                    {% if download %}
+                        <span class="top-text">Source</span>
+                    {% endif %}
+
+                    <div class="source top-item">
+                        <span class="top-icon">
+                            {% include "logos/github.svg" %}
+                        </span>
+                    </div>
+
+                    {% if not download %}
+                        <span class="top-text">Source</span>
+                    {% endif %}
+                </a>
+            {% endif %}
+        </div>
+    {% endif %}
+    {# <br> #}
+    {{ content | safe }}
+</div>
+
+{% if proj.images %}
+<div class="page-images">
+    {% for img in proj.images %}
+        <div class="image-container" onclick="openCarousel({{loop.index}})">
+            <div class="page-image" style="background-image: url('{{img.src}}')"></div>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<script>
+
+function resize_content() {
+    const page_images = document.querySelector(".page-images"); 
+    const content = document.getElementById("main-content");
+    if (page_images) {
+        const height = window.getComputedStyle(page_images).height;
+        content.style["min-height"] = height;
+    }
+}
+
+resize_content();
+
+window.onresize = resize_content;
+
+var current_image = 0;
+const images = [
+{% for img in proj.images %}
+    {
+        "src": "{{img.src}}",
+        "ratio": "{{img.ratio}}",
+    },
+{% endfor %}
+];
+
+var image_carousel = null;
+var just_opened = false;
+const arrow_left = document.querySelector(".arrow-left");
+const arrow_right = document.querySelector(".arrow-right");
+const carousel = document.querySelector(".carousel");
+
+function change_image() {
+    if (image_carousel) {
+        image_carousel.src = images[current_image].src;
+    }
+}
+
+window.onload = () => {
+    image_carousel = document.getElementById("carousel-image");
+    change_image();
+}
+
+function image_prev() {
+    current_image -= 1;
+    if (current_image < 0) current_image = images.length - 1;
+    change_image();
+}
+
+function image_next() {
+    current_image += 1;
+    if (current_image >= images.length) current_image = 0;
+    change_image();
+}
+
+function checkExitCarousel(e) {
+    if (just_opened) {
+        just_opened = false;
+        return;
+    }
+
+    const type = e.target.localName;
+    const id = e.target.id;
+    const klass = e.target.className;
+    const parent =  e.target.parentNode;
+    
+    if (id === "carousel-image" ||
+        klass === "arrow-left" ||
+        klass === "arrow-right" ||
+        (type === "svg" && (parent.className === "arrow-left" || parent.className === "arrow-right"))
+    ) {
+        return;
+    }
+
+    closeCarousel();
+}
+
+function openCarousel(index) {
+    current_image = index - 1;
+    change_image();
+
+    just_opened = true;
+    window.addEventListener("click", checkExitCarousel);
+    carousel.style["display"] = "block";
+}
+
+function closeCarousel() {
+    window.removeEventListener("click", checkExitCarousel);
+    carousel.style["display"] = "none";
+}
+
+</script>
+

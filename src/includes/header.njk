@@ -1,0 +1,18 @@
+{% set active_page = page.url | url %}
+
+<header class="header" role="banner">
+    <nav id="header-nav" class="navbar">
+        {% for item in navigation.top %}
+            <a
+                href="{{item.url}}"
+                class="header-link"
+                {% if helpers.getLinkActiveState(item, active_page) %}
+                    aria-current="page"
+                    id="header-link-current"
+                {% endif %}
+            >
+                {{ item.name }}
+            </a>
+        {% endfor %}
+    </nav>
+</header>

@@ -1,0 +1,22 @@
+{
+    "email": {
+        "url": "mailto:ale55.bason@gmail.com",
+        "text": "ale55.bason@gmail.com",
+        "icon": "envelope"
+    },
+    "linkedin": {
+        "url": "https://www.linkedin.com/in/alessandro-bason/",
+        "text": "linkedin.com/alessandro-bason",
+        "icon": "linkedin"
+    },
+    "github": {
+        "url": "https://github.com/alessandrobason",
+        "text": "github.com/alessandrobason",
+        "icon": "github"
+    },
+    "itchio": {
+        "url": "https://snarmph.itch.io/",
+        "text": "snarmph.itch.io",
+        "icon": "itchio"
+    }
+}

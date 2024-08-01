@@ -1,0 +1,13 @@
+<footer class="footer" role="contentinfo" 
+    {# style="flex-basis: {{helpers.getMaxWidthWithPadding()}}px" #}
+>
+    <hr style="margin:0;width:100%">
+    <div class="footer-inner">
+        Reach me at <a href="{{social.email.url}}">{{ helpers.fixSocialLink(social.email.url) }}</a> or <a href="/contact">through here</a>
+        {# {% for name, item in social %}
+        <a href="{{ item.url }}" rel="me" target="_blank">
+            {% include "icons/" + item.icon %}
+        </a>
+        {% endfor %} #}
+    </div>
+</footer>

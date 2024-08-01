@@ -1,0 +1,28 @@
+---
+layout: base
+---
+{% set item_width=helpers.getContentMaxWidth()/4 %}
+
+<link rel="stylesheet" href="/css/projects.css">
+
+<h1 class="title">{{ title }}</h1>
+<div class="title-sub">{{ content | safe }}</div>
+
+<div class="projects">
+    {% for proj in projects.items() %}
+    <a href="/projects/{{proj.id}}" class="project-item" style="flex-basis: {{item_width * proj.width}}px">
+        {# <div class="project-item" style="flex-basis: {{item_width * proj.width}}px" > #}
+            <div 
+                class="project-item-image" 
+                style="background-image: url('/assets/projects/{{proj.dir}}/{{proj.image}}');"
+            ></div>
+            <div 
+                class="project-title-bar" 
+                style="background-color: rgba({{proj.colour[0]}}, {{proj.colour[1]}}, {{proj.colour[2]}}, 0.867)"
+            >
+                <div class="project-title-text">{{proj.title}}</div>
+            </div>
+        {# </div> #}
+    </a>
+    {% endfor %}
+</div>
