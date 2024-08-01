@@ -38,15 +38,11 @@ module.exports = () => {
 
         let images = glob(`${path}/images/*.*`);
         if (images.length > 0) {
-            const cmd = `aspect-ratio ${images.join(" ")}`;
-            const aspect_ratio = exec(cmd).split("\n");
-
             images = images.map((x) => x.substring(3));
 
             for (const [ind, img] of images.entries()) {
                 image_data.push({
                     "src": img,
-                    "ratio": aspect_ratio[ind].trim()
                 })
             }
         }
