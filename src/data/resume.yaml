@@ -1,0 +1,37 @@
+cv: cv.pdf
+
+work_experience:
+- date: [ 01/2024, 07/2024 ]
+  job: Graphics Programmer
+  company: Assemble Technology
+  description: |
+    At Assemble Technology, I focused on GPU and CPU optimisation for the PlayStation 5 using Unreal Engine 5.
+    <br><br>
+    I gained extensive experience with various tracing tools, such as Unreal Insight and Razor GPU, 
+    to identify and resolve performance issues.
+     * Worked on GPU and CPU profiling and optimisation on shipped games.
+     * Optimised in-house tools written in C++.
+     
+- date: [ 10/2023, 12/2023 ]
+  job: Junior Programmer
+  company: Free Radical Design
+  description: |
+    At Free Radical Design, I worked alongside a team of ~90 people, consistently interfacing with the design and art teams
+    to implement new gameplay features and fix bugs.
+- date: [ 08/2022, 09/2022 ]
+  job: Internship
+  company: People Can Fly
+  description: |
+    At People Can Fly, I worked with a small team of approximately 15 people on the foundations of a new prototype. 
+    <br>
+    My responsibilities included creating new gameplay features according to the game designer's requests.
+
+education:
+- date: [ 2019, 2023 ]
+  school: Abertay University
+  place: Dundee
+  title: Bsc. (Hons) Computer Games Technology
+- date: [ 2016, 2019 ]
+  school: ITSOS Marie Curie
+  place: Cernusco sul Naviglio
+  title: Perito Informatico (Computer Science)

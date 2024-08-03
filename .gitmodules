@@ -1,0 +1,3 @@
+[submodule "clouds-scene"]
+	path = clouds-scene
+	url = https://github.com/alessandrobason/clouds-scene.git

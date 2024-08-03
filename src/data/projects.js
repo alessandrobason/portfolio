@@ -17,14 +17,15 @@ module.exports = () => {
         "beyond-triangles",
         "erosion",
         "bomberman",
+        "clouds",
         "lotp",
-        "apple-valley",
         "waking-nightmare",
         "anim-software",
+        "apple-valley",
         "forest-scene",
         "mandelbrot",
-        "carbon-rapture",
         "picky-clients",
+        "carbon-rapture",
         "loopy-trajectory",
         "pacillus"
     ];

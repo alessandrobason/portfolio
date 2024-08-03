@@ -1,4 +1,5 @@
 const { FontAwesomeIcon } = require("@campj/eleventy-fa-icons");
+const yaml = require("js-yaml");
 
 module.exports = eleventyConfig => {
     eleventyConfig.setQuietMode(true);
@@ -7,8 +8,11 @@ module.exports = eleventyConfig => {
 
     eleventyConfig.addPassthroughCopy({
         "src/assets/": "assets/",
-        "src/css/": "css/"
+        "src/css/": "css/",
+        "favicon.ico": "favicon.ico",
     });
+
+    eleventyConfig.addDataExtension("yaml", (contents) => yaml.load(contents));
 
     return {
         pathPrefix: "/",

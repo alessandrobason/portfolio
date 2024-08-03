@@ -1,3 +1,146 @@
 ---
 layout: base
 ---
+
+<link rel="stylesheet" href="/css/background.css">
+
+<style>
+.top-icon svg {
+    fill: var(--text-color);
+    height: 1.5em;
+    width: 1.5em;
+    margin-right: 5px;
+    vertical-align: -.3em;
+}
+
+.top-link {
+    font-size: 1em;
+    color: var(--text-color);
+    text-decoration: none;
+    opacity: .8;
+}
+
+.top-text {
+    margin-right: 5px;
+    text-decoration: underline;
+}
+
+.top-item {
+    display: inline-block;
+}
+
+.top-items {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.bio {
+    flex: 1;
+    min-width: 350px;
+}
+
+.profile {
+    flex: 0 1 auto;
+}
+
+.profile-img {
+    width: 300px;
+    border-radius: 25%;
+    align-self: flex-end;
+}
+
+.bio-container {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+    margin-bottom: 80px;
+}
+
+.resume-data {
+    margin-bottom: 80px;
+}
+
+.resume-data-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.resume-item {
+    padding: 20px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.resume-item-desc {
+    text-align: justify;
+}
+
+.resume-item-hr {
+    opacity: 0.5;
+}
+
+</style>
+
+{% include "clouds-scene.njk" %}
+
+<div class="page-content">
+    <h1 class="title">{{ title }}</h1>
+    <hr>
+    <div class="top-items">
+        <a class="top-link" target="_blank" href="/assets/{{resume.cv}}">
+            <div class="top-item">
+                <span class="top-icon">
+                    {% include "document.svg" %}
+                </span>
+            </div>
+            <span class="top-text">Download CV</span>
+        </a>
+    </div>
+
+    <br>
+    <h1>Who am I?</h1>
+    <div class="bio-container">
+        <div class="bio">
+            {{ content | safe }}
+        </div>
+        <div class="profile">
+            <img class="profile-img elevated" src="/assets/{{profile}}">
+        </div>
+    </div>
+
+    <div class="resume-data">
+        <h1>Experiences</h1>
+        <div class="resume-data-container">
+            {% for exp in resume.work_experience %}
+                <div class="resume-item elevated">
+                    <div class="date">{{ exp.date | join(" - ") | safe }}</div>
+                    <div class="resume-item-title"> <b>{{ exp.job }}</b>, {{ exp.company }} </div>
+                    {% if exp.description %}
+                    <hr class="resume-item-hr">
+                    {% endif %}
+                    <div class="resume-item-desc">
+                        {{ helpers.parseMd(exp.description) | safe }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="resume-data">
+        <h1>Education</h1>
+        <div class="resume-data-container">
+            {% for edu in resume.education %}
+                <div class="resume-item elevated">
+                    <div class="data">{{ edu.date | join(" - ") | safe }}</div>
+                    <div class="resume-item-title"> <b>{{ edu.title }}</b> </div>
+                    <div class="resume-item-desc">{{ edu.school }}, {{ edu.place }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

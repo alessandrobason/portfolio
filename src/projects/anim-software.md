@@ -4,7 +4,7 @@ title: "Animation Software"
 width: 1
 dir: "animation"
 colour: [ 0, 0, 0 ]
-image: "1.png"
+image: "images/1.png"
 
 source: "https://github.com/alessandrobason/cmp418-Animation"
 download: "https://snarmph.itch.io/animation-coursework"

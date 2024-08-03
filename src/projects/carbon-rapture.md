@@ -1,7 +1,7 @@
 ---
 layout: project-page.njk
 title: "Carbon Rapture"
-width: 1
+width: 2
 dir: "carbon"
 colour: [ 121, 175, 172 ]
 image: "images/main.jpg"

@@ -1,0 +1,1 @@
+@emcc -sFULL_ES3 -O3 -o src/assets/projects/clouds/data/clouds.js clouds-scene/build_single.c

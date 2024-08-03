@@ -17,6 +17,7 @@
     },
     "dependencies": {
         "glob": "^10.2.7",
+        "js-yaml": "^4.1.0",
         "markdown-it-attrs": "^4.1.6",
         "markdown-it-complex-table": "^1.0.0",
         "yaml": "^2.3.1"
