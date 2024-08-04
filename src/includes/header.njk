@@ -119,9 +119,14 @@
 
 <script>
     let webgl_canvas = null;
-    let was_running = true;
+    {# let was_running = true; #}
 
     function toggleBackground(is_enabled) {
+        Module.setRunning(is_enabled);
+        sessionStorage.setItem("background-disable", !is_enabled);
+/*
+        return;
+
         if (!webgl_canvas) {
             webgl_canvas = document.getElementById("canvas");
         }
@@ -139,13 +144,12 @@
             background.removeChild(webgl_canvas);
             sessionStorage.setItem("background-disable", "true");
         }
+*/
     }
 
     document.addEventListener("DOMContentLoaded", function(arg) {
-        if (sessionStorage.getItem("background-disable") === "true") {
-            document.getElementById("background-checkbox").checked = true;
-            was_running = false;
-        }
+        let is_disabled = sessionStorage.getItem("background-disable") === "true";
+        document.getElementById("background-checkbox").checked = is_disabled;
     });
 
     function background_toggle(checkbox) {

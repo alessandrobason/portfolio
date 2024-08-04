@@ -33,21 +33,22 @@
     background.insertBefore(canvas, background.firstChild);
 
     var Module = {
-        noInitialRun: true,
         canvas: canvas,
-        run() {
-            console.log("RUN");
-            Module._main();
-            canvas.style.opacity = 1;
+        {# noInitialRun: true, #}
+        setRunning(is_running) {
+            Module.ccall(
+                "app_set_running",
+                "void",
+                [ "bool" ],
+                [ is_running ]
+            );
+            canvas.style.opacity = is_running ? 1 : 0;
         },
         onRuntimeInitialized() {
             if (sessionStorage.getItem("background-disable") !== "true") {
-                Module.run();
+                Module.setRunning(true);
             }
         },
-        requestAnimationFrame() {
-            alert(1);
-        }
     };
 </script>
 <script async type="text/javascript" src="/assets/projects/clouds/data/clouds.js"></script>
