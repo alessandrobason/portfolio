@@ -119,24 +119,36 @@
 
 <script>
     let webgl_canvas = null;
-    let webgl_parent = null;
+    let was_running = true;
 
-    function background_toggle(checkbox) {
-        // get the webgl canvas, if we can't get it for whatever reason, return early
+    function toggleBackground(is_enabled) {
         if (!webgl_canvas) {
             webgl_canvas = document.getElementById("canvas");
         }
-        if (!webgl_canvas) return;
-        
         const background = document.getElementById("page-background");
 
-        // disable background
-        if (checkbox.checked) {
-            if (!background) return;
-            background.removeChild(webgl_canvas);
+        if (is_enabled) {
+            background.insertBefore(webgl_canvas, background.firstChild);
+            sessionStorage.setItem("background-disable", "false");
+            if (!was_running) {
+                was_running = true;
+                Module.run();
+            }
         }
         else {
-            background.insertBefore(webgl_canvas, background.firstChild);
+            background.removeChild(webgl_canvas);
+            sessionStorage.setItem("background-disable", "true");
         }
+    }
+
+    document.addEventListener("DOMContentLoaded", function(arg) {
+        if (sessionStorage.getItem("background-disable") === "true") {
+            document.getElementById("background-checkbox").checked = true;
+            was_running = false;
+        }
+    });
+
+    function background_toggle(checkbox) {
+        toggleBackground(!checkbox.checked);
     }
 </script>
