@@ -1,0 +1,257 @@
+/*************************************************
+******************  GLOBAL CSS  ******************
+*************************************************/
+
+html {
+    font-size: 50px;
+}
+
+h1 {
+    font-size: 80px;
+}
+
+/*************************************************
+******************  HEADER CSS  ******************
+*************************************************/
+
+#main {
+    grid-template-rows: 140px auto;
+}
+
+.menu-toggle-input {
+    display: block;
+}
+
+#header-nav {
+    display: block;
+    text-align: left;
+}
+
+#menu-toggle {
+    display: block;
+    height: 100%;
+
+    position: relative;
+    top: 50%;
+    padding-left: 40px;
+    transform: translate(0, -25%);
+    z-index: 1;
+  
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.header-menu-item {
+    width: max-content;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    border: 0 solid var(--text-color);
+    padding-bottom: 25px;
+}
+
+#header-link-current {
+    opacity: 1;
+    border-bottom-width: 6px;
+}
+
+#menu-toggle a:hover {
+    opacity: 1;
+}
+
+#menu-toggle input {
+    display: block;
+    width: 90px;
+    height: 80px;
+
+    position: absolute;
+    cursor: pointer;
+
+    opacity: 0;
+    z-index: 2;
+
+    -webkit-touch-callout: none;
+}
+
+#menu-toggle span {
+    display: block;
+    width: 90px;
+    height: 16px;
+    margin-bottom: 12px;
+    position: relative;
+
+    z-index: 1;
+    border-radius: 10px;
+
+    background: var(--text-color);
+  
+    transform-origin: 4px 0px;
+
+    transition: 
+        transform  0.5s  cubic-bezier(0.77,0.2,0.05,1.0),
+        background 0.5s  cubic-bezier(0.77,0.2,0.05,1.0),
+        opacity    0.55s ease;
+}
+
+#menu-toggle span:first-child {
+    transform-origin: 0% 0%;
+}
+
+#menu-toggle span:nth-last-child(2) {
+    transform-origin: 0% 100%;
+}
+
+#menu-toggle input:checked ~ span {
+    opacity: 1;
+    transform: rotate(45deg) translate(-2px, -1px);
+}
+
+#menu-toggle input:checked ~ span:nth-last-child(3) {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+#menu-toggle input:checked ~ span:nth-last-child(2) {
+    transform: rotate(-45deg) translate(0, -1px);
+}
+
+#menu {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+
+    margin: 0px 0 0 -40px;
+    padding: 40px;
+    padding-top: 80px;
+
+    background-color: #383838;
+    list-style-type: none;
+    -webkit-font-smoothing: antialised;
+
+    transform-origin: 0% 0%;
+    transform: translate(0, calc(-100% - 140px));
+
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+
+    font-size: 80px;
+}
+
+#menu-toggle input:checked ~ #menu {
+    transform: none;
+}
+
+.background-toggle-container {
+    top: 35px;
+    right: 50px;
+    z-index: 2;
+}
+
+.checkbox-wrapper #background-checkbox {
+    width: 150px;
+    height: 80px;
+}
+
+.checkbox-wrapper #background-checkbox::after {
+    top: 10px;
+    left: 10px;
+    width: 60px;
+    height: 60px;
+}
+
+.checkbox-wrapper #background-checkbox:checked::after {
+    background-color: #fff;
+    left: 80px;
+}
+
+/*************************************************
+*****************  PROJECTS CSS  *****************
+*************************************************/
+
+.projects {
+    flex-direction: column;
+    gap: 50px;
+}
+
+.project-item {
+    min-height: 500px;
+    max-height: 500px;
+}
+
+.project-title-bar {
+    padding: 50px;
+    width: auto;
+    left: 0;
+    right: 0;
+}
+
+/*************************************************
+******************  RESUME CSS  ******************
+*************************************************/
+
+.bio-container {
+    flex-direction: column-reverse;
+    gap: 0;
+    margin-top: 80px;
+}
+
+.profile, .profile-img {
+    width: 100%;
+}
+
+.resume-data-container {
+    margin-right: -50px;
+    margin-left: -50px;
+    gap: 50px;
+}
+
+.resume-item {
+    border-radius: 50px;
+    padding: 50px;
+}
+
+.resume-item-hr {
+    border: none;
+    height: 5px;
+    color: var(--text-color);
+    background-color: var(--text-color);
+}
+
+/*************************************************
+*****************  CONTACT CSS  ******************
+*************************************************/
+
+.contact-icon svg {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+/*************************************************
+***************  PROJECT PAGE CSS  ***************
+*************************************************/
+
+#carousel-container {
+    width: 70%;
+    align-items: center;
+}
+
+#carousel-image {
+    opacity: 1;
+
+    border-radius: 10px;
+    object-fit: contain;
+    height: max-content;
+    width: max-content;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.arrow-left, .arrow-right {
+    padding: 0 1em 0 1em;
+    cursor: pointer;
+    display: flex;
+}
+
+#carousel-container svg {
+    width: 10em;
+    height: 10em;
+}

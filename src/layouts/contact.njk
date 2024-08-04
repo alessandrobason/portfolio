@@ -2,21 +2,13 @@
 layout: base
 ---
 
-<link rel="stylesheet" href="/css/contact.css">
 <link rel="stylesheet" href="/css/background.css">
 
 <style>
     .contact {
-        padding-inline-start: 40px;
-        list-style: none;
-    }
-
-    .contact-item {
-        line-height: 2em;
-        font-size: 1.4em;
-    }
-
-    .contact-icon {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
 
     .contact-icon svg {
@@ -31,7 +23,14 @@ layout: base
     .contact-link {
         color: var(--text-color);
         text-decoration: none;
-        opacity: .5;
+        opacity: .8;
+    }
+
+    .contact-item {
+        display: flex;
+        gap: 20px;
+        justify-content: flex-start; 
+        align-items: center;
     }
 </style>
 
@@ -39,14 +38,14 @@ layout: base
 
 <h1 class="title">{{ content | safe }}</h1>
 
-<ul class="contact">
+<div class="contact">
     {% for name, item in social %}
-        <li class="contact-item">
+        <div class="contact-item">
             <span class="contact-icon">
                 {% set include_link = ["logos/", item.icon, ".svg"] | join %}
                 {% include include_link %}
             </span>
             <a class="contact-link" href="{{item.url}}">{{item.text}}</a>
-        </li>
+        </div>
     {% endfor %}
-</ul>
+</div>

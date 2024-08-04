@@ -5,36 +5,74 @@
 
 #header-nav {
     display: flex;
-    gap: 9px;
     justify-content: center;
 
-    text-align: center;
     padding: 0;
-    /* line-height: 3em; */
     height: 100%;
     text-align: center;
     align-items: center;
 }
 
-.header-link {
-    border: 0 solid var(--text-color);
-    text-transform: uppercase;
-    margin: 0 9px 0 9px;
-    /* margin: 0 9px 15px 9px; */
-    /* margin-bottom: 15px; */
-    white-space: nowrap;
-    display: inline-block;
+.menu-toggle-input {
+    display: none;
+}
+
+#menu-toggle span {
+    display: none;
+}
+
+#menu {
+    display: flex;
+    gap: 30px;
+}
+
+.header-menu-item {
     text-decoration: none;
+    text-transform: uppercase;
+    border: 0 solid var(--text-color);
+
     color: var(--text-color);
     opacity: 0.5;
     transition: all .2s;
 }
 
-.header-link:hover {
+#menu-toggle a:hover {
     opacity: 1;
 }
 
 #header-link-current {
     opacity: 1;
     border-bottom-width: 2px;
+}    
+
+.background-toggle-container {
+    position: absolute;
+    right: 30px;
+    height: 60px;
+}
+
+.background-toggle {
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+}
+
+.background-toggle label {
+    display: inline-block;
+    line-height: 25px;
+    vertical-align: text-top;
+    user-select: none;
+    cursor: pointer;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    cursor: pointer;
+}
+
+.checkbox-wrapper input {
+    cursor: pointer;
 }

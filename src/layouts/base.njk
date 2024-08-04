@@ -52,4 +52,34 @@
             </div>
         </main>
     </body>
+
+    <script>
+        // detect if the user is on mobile
+        let has_touchscreen = false;
+        if ("maxTouchPoints" in navigator) {
+            has_touchscreen = navigator.maxTouchPoints > 0;
+        }
+        else if ("msMaxTouchPoints" in navigator) {
+            has_touchscreen = navigator.msMaxTouchPoints > 0;
+        } 
+        // thank you mdn jesus christ
+        else {
+            const mQ = matchMedia?.("(pointer:coarse)");
+            if (mQ?.media === "(pointer:coarse)") {
+                hasTouchScreen = !!mQ.matches;
+            } 
+            else if ("orientation" in window) {
+                hasTouchScreen = true; // deprecated, but good fallback
+            } 
+        }
+
+        if (has_touchscreen) {
+            let stylesheet = document.createElement("link");
+            stylesheet.rel = "stylesheet";
+            stylesheet.href = "/css/mobile.css";
+
+            document.body.appendChild(stylesheet);
+        }
+
+    </script>
 </html>

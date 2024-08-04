@@ -1,29 +1,4 @@
 <style>
-    .background-toggle-container {
-        position: absolute;
-        left: 30px;
-        height: 60px;
-    }
-
-    .background-toggle {
-        position: relative;
-        height: 100%;
-        display: flex;
-        justify-content: space-between;
-        gap: 10px;
-        align-items: center;
-    }
-
-    .background-toggle label {
-        display: inline-block;
-        line-height: 25px;
-        vertical-align: text-top;
-    }
-
-    .checkbox-wrapper {
-        display: flex;
-    }
-
     .checkbox-wrapper #background-checkbox {
         appearance: none;
         background-color: #dfe1e4;
@@ -61,10 +36,6 @@
         width: 14px;
     }
 
-    .checkbox-wrapper input[type=checkbox] {
-        cursor: default;
-    }
-
     .checkbox-wrapper #background-checkbox:hover {
         background-color: #c9cbcd;
         transition-duration: 0s;
@@ -93,58 +64,47 @@
 
 <header class="header" role="banner">
     <nav id="header-nav" class="navbar">
-        
+        <div id="menu-toggle">
+            <input class="menu-toggle-input" type="checkbox" />
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+            <div id="menu">
+                {% for item in navigation.top %}
+                    <a 
+                        href="{{item.url}}"
+                        class="header-menu-item"
+                        {% if helpers.getLinkActiveState(item, active_page) %}
+                            aria-current="page"
+                            id="header-link-current"
+                        {% endif %}
+
+                    >
+                        {{ item.name }}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+
         <div class="background-toggle-container">
             <div class="background-toggle">
+                <label id="toggle-label" for="background-checkbox"> Disable background </label>
                 <div class="checkbox-wrapper">
                     <input type="checkbox" id="background-checkbox" onclick="background_toggle(this)">
                 </div>
-                <label id="toggle-label" for="background-checkbox"> Disable background </label>
             </div>
         </div>
-        {% for item in navigation.top %}
-            <a
-                href="{{item.url}}"
-                class="header-link"
-                {% if helpers.getLinkActiveState(item, active_page) %}
-                    aria-current="page"
-                    id="header-link-current"
-                {% endif %}
-            >
-                {{ item.name }}
-            </a>
-        {% endfor %}
     </nav>
 </header>
 
 <script>
     let webgl_canvas = null;
-    {# let was_running = true; #}
 
     function toggleBackground(is_enabled) {
         Module.setRunning(is_enabled);
         sessionStorage.setItem("background-disable", !is_enabled);
-/*
-        return;
-
-        if (!webgl_canvas) {
-            webgl_canvas = document.getElementById("canvas");
-        }
-        const background = document.getElementById("page-background");
-
-        if (is_enabled) {
-            background.insertBefore(webgl_canvas, background.firstChild);
-            sessionStorage.setItem("background-disable", "false");
-            if (!was_running) {
-                was_running = true;
-                Module.run();
-            }
-        }
-        else {
-            background.removeChild(webgl_canvas);
-            sessionStorage.setItem("background-disable", "true");
-        }
-*/
     }
 
     document.addEventListener("DOMContentLoaded", function(arg) {

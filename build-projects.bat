@@ -1,1 +1,1 @@
-@emcc -sFULL_ES3 -O3 -o src/assets/projects/clouds/data/clouds.js clouds-scene/build_single.c
+@emcc -sFULL_ES3 -sEXPORTED_FUNCTIONS="_main,_app_set_running" -sEXPORTED_RUNTIME_METHODS=ccall -O3 -o src/assets/projects/clouds/data/clouds.js clouds-scene/build_single.c
