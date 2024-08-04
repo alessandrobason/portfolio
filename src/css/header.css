@@ -4,16 +4,24 @@
 }
 
 #header-nav {
+    display: flex;
+    gap: 9px;
+    justify-content: center;
+
     text-align: center;
     padding: 0;
-    line-height: 3em;
+    /* line-height: 3em; */
+    height: 100%;
+    text-align: center;
+    align-items: center;
 }
 
 .header-link {
     border: 0 solid var(--text-color);
     text-transform: uppercase;
-    margin: 0 9px 15px 9px;
-    margin-bottom: 15px;
+    margin: 0 9px 0 9px;
+    /* margin: 0 9px 15px 9px; */
+    /* margin-bottom: 15px; */
     white-space: nowrap;
     display: inline-block;
     text-decoration: none;

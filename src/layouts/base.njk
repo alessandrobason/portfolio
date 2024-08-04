@@ -16,8 +16,8 @@
     </head>
 
     <body>
-        <div class="page-background">
-            <div class="page-filter"></div>
+        <div id="page-background">
+            <div id="page-filter"></div>
         </div>
 
         <div class="carousel">
@@ -25,7 +25,6 @@
                 <div class="arrow-left" onclick="image_prev()">
                     {% include "arrow-left.svg" %}
                 </div>
-                {# <div id="carousel-image"></div> #}
                 <img id="carousel-image" class="elevated">
                 <div class="arrow-right" onclick="image_next()">
                     {% include "arrow-right.svg" %}

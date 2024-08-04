@@ -11,13 +11,13 @@
     transition: opacity 2s;
 }
 
-.page-filter {
+#page-filter {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
 }
 </style>
 
@@ -25,21 +25,16 @@
     let canvas = document.createElement("canvas");
     canvas.id = "canvas";
 
-    const filters = document.getElementsByClassName("page-filter");
-    let filt = filters[0];
+    {# const filter = document.getElementById("page-filter"); #}
 
-    const classes = document.getElementsByClassName("page-background");
-    let bg = classes[0];
+    const background = document.getElementById("page-background");
 
     // add canvas before the filter object
-    bg.removeChild(filt);
-    bg.appendChild(canvas);
-    bg.appendChild(filt);
+    background.insertBefore(canvas, background.firstChild);
 
     var Module = {
         canvas: canvas,
         onRuntimeInitialized() {
-            {# canvas.style.display = "block"; #}
             canvas.style.opacity = 1;
         },
     };

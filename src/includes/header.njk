@@ -1,7 +1,107 @@
+<style>
+    .background-toggle-container {
+        position: absolute;
+        left: 30px;
+        height: 60px;
+    }
+
+    .background-toggle {
+        position: relative;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .background-toggle label {
+        display: inline-block;
+        line-height: 25px;
+        vertical-align: text-top;
+    }
+
+    .checkbox-wrapper {
+        display: flex;
+    }
+
+    .checkbox-wrapper #background-checkbox {
+        appearance: none;
+        background-color: #dfe1e4;
+        border-radius: 72px;
+        border-style: none;
+        flex-shrink: 0;
+        height: 20px;
+        margin: 0;
+        position: relative;
+        width: 30px;
+    }
+
+    .checkbox-wrapper #background-checkbox::before {
+        bottom: -6px;
+        content: "";
+        left: -6px;
+        position: absolute;
+        right: -6px;
+        top: -6px;
+    }
+
+    .checkbox-wrapper #background-checkbox,
+    .checkbox-wrapper #background-checkbox::after {
+        transition: all 100ms ease-out;
+    }
+
+    .checkbox-wrapper #background-checkbox::after {
+        background-color: #fff;
+        border-radius: 50%;
+        content: "";
+        height: 14px;
+        left: 3px;
+        position: absolute;
+        top: 3px;
+        width: 14px;
+    }
+
+    .checkbox-wrapper input[type=checkbox] {
+        cursor: default;
+    }
+
+    .checkbox-wrapper #background-checkbox:hover {
+        background-color: #c9cbcd;
+        transition-duration: 0s;
+    }
+
+    .checkbox-wrapper #background-checkbox:checked {
+        background-color: #6e79d6;
+    }
+
+    .checkbox-wrapper #background-checkbox:checked::after {
+        background-color: #fff;
+        left: 13px;
+    }
+
+    .checkbox-wrapper :focus:not(.focus-visible) {
+        outline: 0;
+    }
+
+    .checkbox-wrapper #background-checkbox:checked:hover {
+        background-color: #535db3;
+    }
+
+</style>
+
 {% set active_page = page.url | url %}
 
 <header class="header" role="banner">
     <nav id="header-nav" class="navbar">
+        
+        <div class="background-toggle-container">
+            <div class="background-toggle">
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="background-checkbox" onclick="background_toggle(this)">
+                </div>
+                <label id="toggle-label" for="background-checkbox"> Disable background </label>
+            </div>
+        </div>
         {% for item in navigation.top %}
             <a
                 href="{{item.url}}"
@@ -16,3 +116,27 @@
         {% endfor %}
     </nav>
 </header>
+
+<script>
+    let webgl_canvas = null;
+    let webgl_parent = null;
+
+    function background_toggle(checkbox) {
+        // get the webgl canvas, if we can't get it for whatever reason, return early
+        if (!webgl_canvas) {
+            webgl_canvas = document.getElementById("canvas");
+        }
+        if (!webgl_canvas) return;
+        
+        const background = document.getElementById("page-background");
+
+        // disable background
+        if (checkbox.checked) {
+            if (!background) return;
+            background.removeChild(webgl_canvas);
+        }
+        else {
+            background.insertBefore(webgl_canvas, background.firstChild);
+        }
+    }
+</script>
