@@ -5,6 +5,7 @@ width: 2
 dir: "clouds"
 colour: [ 134, 140, 255 ]
 image: "main.jpg"
+desc: "Volumetric clouds rendering on the GPU using ray marching"
 
 source: "https://github.com/alessandrobason/clouds-scene"
 download: "https://snarmph.itch.io/volumetric-clouds"

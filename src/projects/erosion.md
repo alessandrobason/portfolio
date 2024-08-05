@@ -5,6 +5,7 @@ width: 1
 dir: "procedural"
 colour: [ 27, 24, 86 ]
 image: "images/main.jpg"
+desc: "A showcase of hydraulic erosion on the GPU"
 
 background: "images/1.png"
 source: "https://github.com/alessandrobason/cmp305_coursework"

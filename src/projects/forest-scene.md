@@ -5,6 +5,7 @@ width: 2
 dir: "forest"
 colour: [ 0, 0, 0 ]
 image: "images/main.jpg"
+desc: "3D scene made in DirectX 11 that shows a few graphics programming techniques"
 
 background: "images/1.png"
 source: "https://github.com/alessandrobason/forest-scene"

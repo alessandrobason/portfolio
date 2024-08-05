@@ -5,6 +5,7 @@ width: 1
 dir: "pacillus"
 colour: [ 102, 0, 122 ]
 image: "main.jpg"
+desc: "Game jam game made for the Global Game Jam 2019"
 
 background: "main.jpg"
 source: ""

@@ -5,6 +5,7 @@ width: 1
 dir: "waking-nightmare"
 colour: [ 0, 0, 0 ]
 image: "images/waking-nightmare.jpg"
+desc: "An augmented reality game made using Unreal Engine 5 "
 
 background: "images/waking-nightmare.jpg"
 source: "https://github.com/alessandrobason/Waking-Nightmare"

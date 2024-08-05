@@ -5,6 +5,7 @@ width: 1
 dir: "bomberman"
 colour: [ 246, 129, 90 ]
 image: "images/main.jpg"
+desc: "4-player local and online multiplayer bomberman game"
 
 background: "bg.jpg"
 source: "https://github.com/alessandrobason/cmp303-coursework"

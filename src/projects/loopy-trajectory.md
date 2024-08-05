@@ -5,6 +5,7 @@ width: 1
 dir: "loopy"
 colour: [ 0, 0, 0 ]
 image: "main.gif"
+desc: "Game jam game made for the Abertay Game Development Society Game Jam"
 
 background: "main.gif"
 source: ""

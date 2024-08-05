@@ -2,6 +2,7 @@
 layout: resume.njk
 title: Resume
 profile: "profile.jpg"
+og_image: "profile.jpg"
 ---
 
 Hi! My name is Alessandro Bason, I'm a games programmer. I have a passion for engine and graphics programming in particular, and I like to build stuff from scratch (like this website!).

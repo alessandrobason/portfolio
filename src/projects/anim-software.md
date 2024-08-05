@@ -5,6 +5,7 @@ width: 1
 dir: "animation"
 colour: [ 0, 0, 0 ]
 image: "images/1.png"
+desc: "A small program written in C++ to create and edit many types of animation."
 
 source: "https://github.com/alessandrobason/cmp418-Animation"
 download: "https://snarmph.itch.io/animation-coursework"

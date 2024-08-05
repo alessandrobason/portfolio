@@ -5,6 +5,7 @@ width: 2
 dir: "carbon"
 colour: [ 121, 175, 172 ]
 image: "images/main.jpg"
+desc: "Game jam game made for the Carbon Capture for Climate Action Game Jam"
 
 background: "images/main.jpg"
 source: ""

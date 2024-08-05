@@ -5,6 +5,7 @@ width: 2
 dir: "lotp"
 colour: [ 64, 88, 248 ]
 image: "images/main.jpg"
+desc: "2D game inspired by Legend of Zelda and Enter the Gungeon, made with SFML. "
 
 background: "images/4.gif"
 source: "https://github.com/alessandrobason/cmp105_coursework"

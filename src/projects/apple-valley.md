@@ -5,6 +5,7 @@ width: 2
 dir: "apple-valley"
 colour: [ 171, 106, 255 ]
 image: "images/main.jpg"
+desc: "First-person farming and management game"
 
 background: "images/main.jpg"
 source: ""

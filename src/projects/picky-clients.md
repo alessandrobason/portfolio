@@ -5,6 +5,7 @@ width: 1
 dir: "picky-clients"
 colour: [ 229, 113, 123 ]
 image: "images/main.gif"
+desc: "Game jam game made for the Kenney Game Jam 2019"
 
 background: "images/main.gif"
 source: ""

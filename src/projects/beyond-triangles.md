@@ -5,6 +5,7 @@ width: 2
 dir: "sdf"
 colour: [ 114, 72, 81 ]
 image: "main.jpg"
+desc: "Beyond Triangles is a user-friendly program that enables non-technical users to create and modify complex 3D sculptures using signed distance fields and rendering them with ray marching."
 
 background: "images/9.jpg"
 source: "https://github.com/alessandrobason/cmp400_honours"

@@ -5,6 +5,7 @@ width: 1
 dir: "mandelbrot"
 colour: [ 255, 0, 245 ]
 image: "images/main.jpg"
+desc: "A visualization of the Mandelbrot set using Sokol GFX and ImGui"
 
 background: "images/2.png"
 source: "https://github.com/alessandrobason/mandelbrot-set-coursework"

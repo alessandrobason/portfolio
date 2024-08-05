@@ -1,77 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset-"UTF-8" />
-        <title>Alessandro Bason</title>
+{% if dir and image %}
+    {% set og_image = [ "/assets/projects", dir, image ] | join("/") %}
+{% endif %}
 
-        <link rel="preconnect" href="https://fonts.googleapis.com"> 
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        {% for f in fonts %}
-        <link href="https://fonts.googleapis.com/css2?family={{f}}&display=swap" rel="stylesheet">
-        {% endfor %}
+{% if desc %}
+    {% set og_desc = desc %}
+{% endif %}
 
-        <link rel="icon" type="image/jpg" href="/favicon.ico"/>
-
-        <link rel="stylesheet" href="/css/header.css">
-        <link rel="stylesheet" href="/css/global.css">
-        <link rel="stylesheet" href="/css/footer.css">
-    </head>
-
-    <body>
-        <div id="page-background">
-            <div id="page-filter"></div>
-        </div>
-
-        <div class="carousel">
-            <div id="carousel-container">
-                <div class="arrow-left" onclick="image_prev()">
-                    {% include "arrow-left.svg" %}
-                </div>
-                <img id="carousel-image" class="elevated">
-                <div class="arrow-right" onclick="image_next()">
-                    {% include "arrow-right.svg" %}
-                </div>
-            </div>
-        </div>
-
-        <main id="main">
-            {% include "header.njk" %}
-            <div class="content-container">
-                <div class="content-spacing"></div>
-
-                <div class="content-outer" style="flex-basis: {{helpers.getMaxWidthWithPadding()}}px; max-width: {{helpers.getMaxWidthWithPadding()}}px">
-                    <div class="content">
-                        <div id="main-content" style="width: 100%">
-                            {{ content | safe }}
-                        </div>
-                        {% include "footer.njk" %}
-                    </div>
-                </div>
-
-                <div class="content-spacing"></div>
-            </div>
-        </main>
-    </body>
-
-    <script>
-        function isTouchEventsEnabled() {
-            // Bug in FireFox+Windows 10, navigator.maxTouchPoints is incorrect when script is running inside frame.
-            // TBD: report to bugzilla.
-            const navigator = (window.top || window).navigator;
-            const maxTouchPoints = Number.isFinite(navigator.maxTouchPoints) ? navigator.maxTouchPoints : navigator.msMaxTouchPoints;
-            if (Number.isFinite(maxTouchPoints)) {
-                // Windows 10 system reports that it supports touch, even though it acutally doesn't (ignore msMaxTouchPoints === 256).
-                return maxTouchPoints > 0 && maxTouchPoints !== 256;
-            }
-            return 'ontouchstart' in window;
-        }
-
-        if (isTouchEventsEnabled()) {
-            let stylesheet = document.createElement("link");
-            stylesheet.rel = "stylesheet";
-            stylesheet.href = "/css/mobile.css";
-
-            document.body.appendChild(stylesheet);
-        }
-    </script>
-</html>
+{% extends "base-impl.njk" %}

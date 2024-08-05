@@ -2,6 +2,8 @@
 layout: base
 ---
 
+{% set a = "b" %}
+
 <link rel="stylesheet" href="/css/project-page.css">
 <link rel="stylesheet" href="/css/background.css">
 
@@ -14,7 +16,6 @@ layout: base
 {% endif %}
 
 {% set proj = projects.getProject(title) %}
-{# <meta name="viewport" content="width=device-width, initial-scale=1"> #}
 
 <div class="page-content">
     <h1 class="title">{{ title }}</h1>
