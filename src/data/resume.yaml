@@ -16,8 +16,9 @@ work_experience:
   job: Junior Programmer
   company: Free Radical Design
   description: |
-    At Free Radical Design, I worked alongside a team of ~90 people, consistently interfacing with the design and art teams
-    to implement new gameplay features and fix bugs.
+    At Free Radical Design, I collaborated with a team of ~90 people, regularly interfacing with the design and art teams to implement new gameplay features and fix bugs.
+    <br>
+    I worked with Unreal Engine 5 and had to take into consideration the multiplayer aspect of the game when implementing features
 - date: [ 08/2022, 09/2022 ]
   job: Internship
   company: People Can Fly

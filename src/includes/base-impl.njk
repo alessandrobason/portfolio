@@ -75,7 +75,6 @@
     <script>
         function isTouchEventsEnabled() {
             // Bug in FireFox+Windows 10, navigator.maxTouchPoints is incorrect when script is running inside frame.
-            // TBD: report to bugzilla.
             const navigator = (window.top || window).navigator;
             const maxTouchPoints = Number.isFinite(navigator.maxTouchPoints) ? navigator.maxTouchPoints : navigator.msMaxTouchPoints;
             if (Number.isFinite(maxTouchPoints)) {

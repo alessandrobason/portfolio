@@ -24,3 +24,7 @@ The raymarcher returns early if it finds that the density has already reached it
 
 The sunflare is created by sampling the noise texture using the angle between the pixel's coordinate and the sun screen position.
 The glare is also slightly offset using the time since the program start to give it an animated glowing effect.
+
+The noise textures are uncompressed as noise compresses very badly, instead they are saved as .raw file which have 4 bytes headers (2 for width and 2 for height) then raw image data. This also means that there is no need for additional allocation after loading the file.
+
+The whole program uses only a single allocation of 5MB at the beginning for image loading.
