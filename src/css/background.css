@@ -3,6 +3,7 @@
 }
 
 .content-outer {
+    flex-basis: 80%;
     background-color: rgba(0, 0, 0, 0.7);
 
     -webkit-backdrop-filter: blur(100px);
