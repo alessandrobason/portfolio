@@ -48,15 +48,6 @@ module.exports = () => {
             }
         }
 
-        // console.log();
-
-        // for (const image of images) {
-        //     // console.log(image);
-        //     const aspect_ratio = exec(`aspect-ratio ${image}`);
-        // }
-
-        // images = images.map((x) => x.substring(3));
-
         projs.push({
             "title": proj.title,
             "width": proj.width,
@@ -70,28 +61,6 @@ module.exports = () => {
         });
     }
 
-/*
-    let pages = []
-    for (const o of order) {
-        pages.push(`src/projects/${o}.md`)
-    }
-
-    for (const [i, p] of pages.entries()) {
-        const item = matter(fs.readFileSync(p));
-        const proj = item.data;
-
-        projs.push({
-            "title": proj.title,
-            "width": proj.width,
-            "dir": proj.dir,
-            "colour": proj.colour,
-            "image": proj.image,
-            "id": order[i],
-            "github": proj.download,
-            "itch": proj.source
-        });
-    }
-*/
     return {
         items() {
             return projs;
@@ -106,5 +75,4 @@ module.exports = () => {
             return null;
         }
     }
-    return projs;
 }
